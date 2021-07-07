@@ -41,7 +41,7 @@
                     <h4>Creación de materia</h4>
                     <ul class="nav nav-pills card-header-pills ml-auto">
                         <li class="nav-item">
-                            <a class="nav-link active" href="">Regresar</a>
+                            <a class="nav-link active" href="./materia.php">Regresar</a>
                         </li>
                     </ul >
                 </div>

@@ -1,3 +1,9 @@
+<?php
+    include_once("../config/BDconnect1.php");
+    $conexion = new Database;
+    $resultado = $conexion->materias();
+?>
+
 <!doctype html>
 <html lang="en">
 
@@ -50,16 +56,19 @@
                         <thead>
                             <tr>
                                 <th scope="col">#</th>
-                                <th scope="col">Nombre</th>
+                                <th scope="col">nombre</th>
                                 <th scope="col">Herramientas</th>
                             </tr>
                         </thead>
                         <tbody>
                         <?php 
                             foreach($resultado as $fila){
+                                echo $resultado;
                                 echo "<tr>
-                                   <td>".$fila['nombre']."</td>
-                                </tr>";
+                                <td>".$fila['id']."</td>
+                                <td>".$fila['nombre']."</td>
+                            </tr>";
+
                             }
                         ?>
                         </tbody>

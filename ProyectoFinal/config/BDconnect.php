@@ -54,5 +54,13 @@ public function validarIdentificacion($identificacion){
         );
     return ($query);
 }
+
+public function estudiantes(){
+    $conexion = Database::getInstance();
+    $result = $conexion->db->prepare("SELECT identificacion, nombres, apellidos, email, telefono  FROM identificacion, nombres, apellidos, email, telefono");
+    $result->execute();
+    return $result;
+}
+
     }
 ?>

@@ -30,7 +30,7 @@
             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">rayan ray</button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item active" href="">Cerrar sesión</a>
+                <a  class="dropdown-item active" href="">Cerrar sesión</a>
             </div>
         </div>
     </nav>
@@ -41,7 +41,7 @@
                     <h4>Creación de estudiantes</h4>
                     <ul class="nav nav-pills card-header-pills ml-auto">
                         <li class="nav-item">
-                            <a class="nav-link active" href="">Regresar</a>
+                            <a  class="nav-link active" href="./estudiantes.php">Regresar</a>
                         </li>
                     </ul >
                 </div>

@@ -24,7 +24,7 @@
 
    try {
        $conexion = database::getInstance();
-       $query = $conexion->db->prepare("INSERT INTO  materia (nombre) VALUES (:nombre)");
+       $query = $conexion->db->prepare("INSERT INTO  materias (nombre) VALUES (:nombre)");
        $query->execute(
            array(
                
@@ -42,7 +42,7 @@
  
 public function validarNombre($nombre){
     $conexion = Database:: getInstance();
-    $query = $conexion->db->prepare("SELECT * FROM materia WHERE nombre =:nombre");
+    $query = $conexion->db->prepare("SELECT * FROM materias WHERE nombre =:nombre");
     $query->execute(
         array(
             ":nombre" => $nombre
@@ -50,6 +50,14 @@ public function validarNombre($nombre){
         );
     return ($query);
 }
+
+public function materias(){
+    $conexion = Database::getInstance();
+    $result = $conexion->db->prepare("SELECT nombre FROM nombre");
+    $result->execute();
+    return $result;
+}
+
 
 
    }

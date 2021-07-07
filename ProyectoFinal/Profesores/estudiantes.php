@@ -1,3 +1,9 @@
+<?php
+    include_once("../config/BDconnect.php");
+    $conexion = new Database;
+    $resultado = $conexion->estudiantes();
+?>
+
 <!doctype html>
 <html lang="en">
 <head>

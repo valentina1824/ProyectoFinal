@@ -10,24 +10,27 @@
         $Apellidos = $_POST['Apellidos'];
         $Correo_electronico = $_POST['Correo_electronico'];
         $Contraseña =  $_POST['Contraseña'];
-        $Confirmar_contraseña =  $_POST['Confirmar_contraseña'];
+        $Confirmar_contraseña =  $_POST['Confirma_tu_contraseña'];
         
 
 
         $conexion = new Database;
-        $resultado = $conexion->validarNumero_de_identificacion($Numero_de_identificacion) validarCorreo_electronico($Correo_electronico);
+        $resultado = $conexion->validarNumero_de_identificacion($Numero_de_identificacion, $Correo_electronico); 
         $contador = $resultado->rowCount();
 
         if($contador > 0){
             $confirm = 3;
         }else { 
-            $confirm = $conexion->insertar( $Numero_de_identificacion, $Nombres, $Apellidos, $Correo_electronico,  $Contraseña, $Confirmar_contraseña);
+            $confirm = $conexion->insertar( $Numero_de_identificacion, $Nombres, $Apellidos, $Correo_electronico,  $Contraseña, $Confirma_tu_contraseña);
         }
 
         }else{
           $confirm = 2;
         }
         
-  } 
-  header('Location: ../Profesores/creacion.php?confirm='.$confirm)
+  } else {
+    $text = $_POST['Numero_de_identificacion'];
+    $confirm = $text;
+  }
+  header('Location: ../index.php?confirm='.$confirm) 
 ?>

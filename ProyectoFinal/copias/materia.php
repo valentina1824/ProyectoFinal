@@ -1,17 +1,3 @@
-<?php
-   include_once("../config/BDconnect2.php");
-
- $conexion = new Database;
- $resultado= $conexion->datosMaterias();
-
- $idMateria = "";
- $nomMateria = "";
- foreach($resultado->fetchAll(PDO::FETCH_OBJ) as $columnaMateria){
-    $idMateria = $columnaMateria->id;
-    $nomMateria = $columnaMateria->nombre;
-}
-?>
-
 
 <!doctype html>
 <html lang="en">
@@ -22,64 +8,74 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
-        integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
-    <link rel="stylesheet" href="./style.css">   
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <link rel="stylesheet" href="./style.css">
 
     <title>PROFESORES</title>
 </head>
 
 <body class="style">
-    <!-- Barra de navegacion -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
         <div class="dropdown">
             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Estudiantes</button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item active" href="./estudiantes.php">Ver estudiantes</a>
-                <a class="dropdown-item" href="./materia.php">Materias</a>
+                <a class="dropdown-item" href="./estudiantes.php">Ver estudiates</a>
+                <a class="dropdown-item active" href="./materia.php">Materias</a>
                 <a class="dropdown-item" href="./archivos.php">Archivos</a>
             </div>
         </div>
         <div class="dropdown ml-auto">
             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">rayan ray</button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <div class="dropdown-menu " aria-labelledby="dropdownMenuButton">
                 <a class="dropdown-item active" href="">Cerrar sesión</a>
             </div>
         </div>
     </nav>
-    <div class="justify-content-center">
-        <div class="p-5 my-5">
+    <div class="d-flex justify-content-center">
+        <div class="p-4 my-5">
             <div class="card">
                 <div class="card-header d-flex">
-                    <h4>Creación de materia</h4>
+                    <h4>Listado de materias</h4>
                     <ul class="nav nav-pills card-header-pills ml-auto">
                         <li class="nav-item">
-                            <a class="nav-link active" href="./materia.php">Regresar</a>
+                            <a class="nav-link active" href="./creaciondos.php">Crear materia</a>
                         </li>
-                    </ul >
+                    </ul>
                 </div>
-                <form action="../config/actualizar.php" method="POST">
-                    <div class="p-5 justify-content-center">
-                    <div class="form-group">
-                    <label for="userId">Id</label>
-                        <input  value="<?=$idMateria ?>" required type="text" class="form-control" id="nombre"  name="nombre" aria-describedby="emailHelp">
-                        
-                        <label for="user">Nombre</label>
-                        <input  value="<?=$nomMateria ?>"  required type="text" class="form-control" id="nombre"  name="nombre" aria-describedby="emailHelp">
-                        <small id="userlHelp" class="form-text text-muted"></small>          
-                      </div>
-                      <button type="submit" class="btn btn-primary">Crear</button>
+                <div class="card-body">
+                    <div class="alert alert-success" role="alert">No se puede realizar la acción, comunicate con el
+                        administrador</div>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">nombre</th>
+                                <th scope="col">Herramientas</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        <?php 
+                            foreach($resultado as $fila){
+                                echo $resultado;
+                                echo "<tr>
+                                <td>".$fila['id']."</td>
+                                <td>".$fila['nombre']."</td>
+                                <td>
+                                   <a href='creacion.php?id=".$fila['id']."' type='button'  class='btn btn-primary'>Modificar</a>                       
+                                   <a href='#algo' type='button' class='btn btn-danger'>Eliminar</a>
+                                </td>
+                                   </tr>";
 
-                </form>
-            </div>
+                            }
+                        ?>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
-                        
-                    
-                
 
     <!-- Optional JavaScript; choose one of the two! -->
 
@@ -100,3 +96,6 @@
 </body>
 
 </html>
+
+        
+    
